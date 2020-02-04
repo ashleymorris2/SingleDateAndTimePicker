@@ -95,6 +95,7 @@ public abstract class WheelPicker<V> extends View {
     private boolean hasAtmospheric;
     private boolean isCyclic;
     private boolean isCurved;
+    protected boolean hideDisabled;
 
     private boolean isClick;
     private boolean isForceFinishScroll;
@@ -133,6 +134,7 @@ public abstract class WheelPicker<V> extends View {
             }
         }
     };
+
 
     public WheelPicker(Context context) {
         this(context, null);
@@ -686,6 +688,10 @@ public abstract class WheelPicker<V> extends View {
         invalidate();
     }
 
+    public void setHideDisabled(boolean hideDisabled) {
+        this.hideDisabled = hideDisabled;
+    }
+
     public void setOnItemSelectedListener(OnItemSelectedListener listener) {
         onItemSelectedListener = listener;
     }
@@ -1004,6 +1010,8 @@ public abstract class WheelPicker<V> extends View {
             return getResources().getConfiguration().locale;
         }
     }
+
+
 
     public interface BaseAdapter<V> {
 

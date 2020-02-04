@@ -33,6 +33,7 @@ import static com.github.florent37.singledateandtimepicker.DateHelper.getCalenda
 
 public class SingleDateAndTimePicker extends LinearLayout {
 
+    public static final boolean HIDE_DISABLED_DATES = false;
     public static final boolean IS_CYCLIC_DEFAULT = false;
     public static final boolean IS_CURVED_DEFAULT = false;
     public static final boolean MUST_BE_ON_FUTUR_DEFAULT = false;
@@ -181,6 +182,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
                 });
 
         daysPicker.setMinDate(minDate);
+
         daysPicker.setMaxDate(maxDate);
 
         minutesPicker
@@ -293,6 +295,14 @@ public class SingleDateAndTimePicker extends LinearLayout {
     public void setCyclic(boolean cyclic) {
         for (WheelPicker picker : pickers) {
             picker.setCyclic(cyclic);
+        }
+    }
+
+    public void setDisabledDatesHidden(boolean hideDisabled) {
+        for (WheelPicker picker : pickers) {
+            if(picker instanceof WheelDayPicker) {
+                picker.setHideDisabled(hideDisabled);
+            }
         }
     }
 
@@ -575,6 +585,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
         setMustBeOnFuture(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_mustBeOnFuture, MUST_BE_ON_FUTUR_DEFAULT));
         setVisibleItemCount(a.getInt(R.styleable.SingleDateAndTimePicker_picker_visibleItemCount, VISIBLE_ITEM_COUNT_DEFAULT));
 
+        setDisabledDatesHidden(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_hide_disabled_dates, HIDE_DISABLED_DATES));
         setDisplayDays(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_displayDays, displayDays));
         setDisplayMinutes(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_displayMinutes, displayMinutes));
         setDisplayHours(a.getBoolean(R.styleable.SingleDateAndTimePicker_picker_displayHours, displayHours));

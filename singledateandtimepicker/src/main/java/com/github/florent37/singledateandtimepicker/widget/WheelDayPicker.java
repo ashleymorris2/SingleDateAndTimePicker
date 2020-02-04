@@ -77,14 +77,16 @@ public class WheelDayPicker extends WheelPicker<String> {
         int minPadding = DAYS_PADDING;
         int maxPadding = DAYS_PADDING;
 
-        if (minDate != null) {
-            int dayDifference = calculateDayDifference(minDate);
-            minPadding = dayDifference;
-        }
+        if(hideDisabled) {
+            if (minDate != null) {
+                int dayDifference = calculateDayDifference(minDate);
+                minPadding = dayDifference;
+            }
 
-        if (maxDate != null) {
-            int dayDifference = calculateDayDifference(maxDate);
-            maxPadding = dayDifference;
+            if (maxDate != null) {
+                int dayDifference = calculateDayDifference(maxDate);
+                maxPadding = dayDifference;
+            }
         }
 
         Calendar instance = Calendar.getInstance();

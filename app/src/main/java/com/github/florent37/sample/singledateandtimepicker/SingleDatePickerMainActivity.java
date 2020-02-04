@@ -34,12 +34,10 @@ public class SingleDatePickerMainActivity extends AppCompatActivity {
         });
 
         Calendar minDate = Calendar.getInstance();
-        minDate.add(Calendar.DAY_OF_MONTH, -1);
-
+        minDate.add(Calendar.DAY_OF_MONTH, -2);
         singleDateAndTimePicker.setMinDate(minDate.getTime());
 
         Calendar maxDate = Calendar.getInstance();
-
         singleDateAndTimePicker.setMaxDate(maxDate.getTime());
     }
 
